@@ -1,0 +1,4 @@
+{
+  "psldb": "mongodb://localhost/matchescrud",
+  "jwtPrivateKey": "SomePrivateKey"
+}
