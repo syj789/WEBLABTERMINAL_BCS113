@@ -13,7 +13,7 @@ var Match = mongoose.model("Match", matchSchema);
 
 function validateMatch(data) {
   const schema = Joi.object({
-    city: Joi.string().min(3).max(100).required(),
+    city: Joi.string().min(3).required(),
     date: Joi.types.Date(),
     teamA: Joi.string().min(0).required(),
     teamB: Joi.string().min(0).required(),

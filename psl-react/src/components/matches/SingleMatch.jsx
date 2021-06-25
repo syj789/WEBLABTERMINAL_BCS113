@@ -5,11 +5,12 @@ import { withRouter } from "react-router";
 import userService from "../../services/UserService";
 const SingleMatch = (props) => {
   const { match, onDelete, history } = props;
+
   console.log(props);
   return (
     <Grid item xs={4}>
       <h2>
-        {match.name}{" "}
+        {match.city}{" "}
         {userService.isAdmin() && (
           <>
             <Button
@@ -42,7 +43,9 @@ const SingleMatch = (props) => {
           </>
         )}
       </h2>
-      <p>{match.price}</p>
+      <p>{match.date}</p>
+      <p>{match.teamA}</p>
+      <p>{match.teamB}</p>
       <hr />
     </Grid>
   );

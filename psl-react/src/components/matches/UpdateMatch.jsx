@@ -5,13 +5,18 @@ import matchService from "../../services/MatchesService";
 import Admin from "../auth/Admin";
 
 const UpdateMatch = (props) => {
-  const [name, setName] = React.useState("");
-  const [price, setPrice] = React.useState(0);
+  const [city, setCity] = React.useState("");
+  const [date, setDate] = React.useState("");
+  const [teamA, setteamA] = React.useState("");
+  const [teamB, setteamB] = React.useState("");
+
   const id = props.match.params.id;
   React.useEffect(() => {
     matchService.getSingleMatch(id).then((data) => {
-      setName(data.name);
-      setPrice(data.price);
+      setCity(data.city);
+      setDate(data.date);
+      setteamA(data.teamA);
+      setteamB(data.teamB);
     });
   }, []);
   return (
@@ -23,19 +28,37 @@ const UpdateMatch = (props) => {
         <Grid item xs={3}></Grid>
         <Grid item xs={6}>
           <TextField
-            label="name"
+            label="City"
             fullWidth
-            value={name}
+            value={city}
             onChange={(e) => {
-              setName(e.target.value);
+              setCity(e.target.value);
             }}
           />
           <TextField
-            label="price"
+            label="Date"
             fullWidth
-            value={price}
+            value={date}
             onChange={(e) => {
-              setPrice(e.target.value);
+              setDate(e.target.value);
+            }}
+          />
+
+            <TextField
+            label="Team-A"
+            fullWidth
+            value={teamA}
+            onChange={(e) => {
+              setteamA(e.target.value);
+            }}
+          />
+
+            <TextField
+            label="Team-B"
+            fullWidth
+            value={teamB}
+            onChange={(e) => {
+              setteamB(e.target.value);
             }}
           />
         </Grid>
@@ -47,7 +70,7 @@ const UpdateMatch = (props) => {
             color="primary"
             onClick={(e) => {
               matchService
-                .updateMatch(id, { name, price })
+                .updateMatch(id, { city, date,teamA,teamB})
                 .then((data) => {
                   console.log(data);
                   props.history.push("/matches");
